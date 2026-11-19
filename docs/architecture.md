@@ -11,7 +11,7 @@
 | Manifest агента | `.github/agents/build-engineer.agent.md` | Описує роль, обмеження, доступні skills і команди, правила безпечної роботи та критерії успіху. Спрямовує агента до відповідної команди чи skill. |
 | Skills | `.github/skills/project-scaffold/SKILL.md`, `.github/skills/build-and-test/SKILL.md`, `.github/skills/github-actions/SKILL.md` | Надають детальні вимоги, вхідні параметри, безпечні правила створення/повторного запуску та перевірки для структури, збірки й CI. Команди відповідних етапів застосовують ці інструкції. |
 | Команди | `.github/prompts/git-init.prompt.md`, `.github/prompts/create-project.prompt.md`, `.github/prompts/create-build.prompt.md`, `.github/prompts/create-actions.prompt.md`, `.github/prompts/check.prompt.md` | Реалізують окремі операції. Приймають задані параметри, перевіряють передумови й результат, а про невдачу повідомляють оркестратору через результат виконання команди. |
-| Оркестратор | `.github/prompts/init.prompt.md` | Перевіряє передумови, задає сталі параметри, викликає команди в зафіксованому порядку та після кожного кроку вирішує, чи можна продовжувати. Завершує звіт результатом `PASS` або `FAIL`. |
+| Оркестратор | `.github/prompts/run-init.prompt.md` | Перевіряє передумови, задає сталі параметри, викликає команди в зафіксованому порядку та після кожного кроку вирішує, чи можна продовжувати. Завершує звіт результатом `PASS` або `FAIL`. |
 
 ### Skills
 
@@ -28,7 +28,9 @@
 | `/create-build` | Налаштувати Maven, Java 17, JUnit 5 і `target/hello.jar`. |
 | `/create-actions` | Налаштувати `ci.sh`, `ci.bat` і GitHub Actions CI. |
 | `/check` | Перевірити файли, збірку, тест, JAR, CI та Git без виправлення проблем. |
-| `/init` | Оркеструвати повне налаштування та фінальну перевірку. |
+| `/run-init` | Оркеструвати повне налаштування та фінальну перевірку. |
+
+Команда `init` з файлу `.github/prompts/run-init.prompt.md` викликається як `/run-init` через конфлікт із вбудованою командою VS Code `/init`.
 
 ## Дані між етапами `init`
 
@@ -54,7 +56,7 @@
 | Файл або група файлів | Роль |
 |---|---|
 | `.github/agents/build-engineer.agent.md` | Маніфест агента: роль, політики, посилання на skills і команди, загальний процес та критерії готовності. |
-| `.github/prompts/init.prompt.md` | Повний сценарій оркестрації, послідовність кроків і правила зупинки/підсумкового звіту. |
+| `.github/prompts/run-init.prompt.md` | Повний сценарій оркестрації, послідовність кроків і правила зупинки/підсумкового звіту. |
 | `.github/prompts/git-init.prompt.md` | Ініціалізація Git і налаштування `.gitignore`. |
 | `.github/prompts/create-project.prompt.md` | Створення початкових вихідних файлів і структури проєкту. |
 | `.github/prompts/create-build.prompt.md` | Maven, Java 17, JUnit 5, тест і виконуваний JAR. |
@@ -70,5 +72,6 @@
 |---|---|---|
 | Виконуваний файл | `hello` | `target/hello.jar` |
 | Каталог результатів збірки | `build/` | `target/` (стандартний каталог Maven) |
+| Назва prompt-файлу оркестратора | `.github/prompts/init.prompt.md` | `.github/prompts/run-init.prompt.md` через конфлікт з вбудованою `/init` |
 
 Артефакт створює Maven; його запускають командою `java -jar target/hello.jar`.

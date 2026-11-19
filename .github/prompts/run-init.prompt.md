@@ -1,6 +1,7 @@
 ---
 description: Оркеструвати повне створення та перевірку Java-проєкту
 agent: build-engineer
+name: run-init
 ---
 
 # init

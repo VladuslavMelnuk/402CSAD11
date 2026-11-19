@@ -29,7 +29,7 @@ Use the available project skills as the implementation guidance:
 
 Use these commands for the corresponding operations:
 
-- `init` is the end-to-end orchestrator. For a full project setup, use it to coordinate the steps below in order and finish with `check`.
+- `init` is the end-to-end orchestrator. For a full project setup, use `/run-init` to coordinate the steps below in order and finish with `check`.
 - `git-init` initializes Git only when the workspace is not already a Git repository, creates or updates `.gitignore` to exclude `target/`, `*.class`, `*.log`, and IDE files, and displays Git status.
 - `create-project` creates the Java application and project structure.
 - `create-build` configures Maven, Java 17, JUnit 5, and `target/hello.jar`.
@@ -59,7 +59,7 @@ For a focused request, use only its relevant command and skill, then run `check`
 ## Workflow
 
 1. Inspect the repository, current branch, working tree, and existing project configuration.
-2. For a full setup, invoke `init` as the orchestrator. Ensure its work follows the skill guidance and the sequence below; do not duplicate steps already completed.
+2. For a full setup, invoke `/run-init` as the orchestrator. Ensure its work follows the skill guidance and the sequence below; do not duplicate steps already completed.
 3. If Git is needed, run `git-init` only when no repository exists.
 4. Apply `project-scaffold` and `create-project` to create the Maven source layout, Java 17 Hello World application, and package `edu.lpnu.hello`.
 5. Apply `build-and-test` and `create-build` to configure JUnit 5 and Maven packaging. Ensure the final artifact is exactly `target/hello.jar` and is runnable if the project is configured as an executable jar.
@@ -87,6 +87,6 @@ The task is successful only when all applicable criteria are met and reported:
 - Running `java -jar target/hello.jar` prints `Hello, World!`.
 - `target/` is not tracked by Git.
 - The repository contains no secrets.
-- Running `init` again does not break or duplicate existing project files or configuration.
+- Running `/run-init` again does not break or duplicate existing project files or configuration.
 - The available `check` command and relevant local verification pass, or any unavailable verification is explicitly identified with its blocker.
 - No prohibited action was performed, and the final changes preserve unrelated workspace content.

@@ -33,8 +33,8 @@ agent: build-engineer
    - `.github/prompts/create-build.prompt.md`
    - `.github/prompts/create-actions.prompt.md`
    - `.github/prompts/check.prompt.md`
-   - `.github/prompts/init.prompt.md`
-4. **Порядок `init`:** перевір вміст `.github/prompts/init.prompt.md` і підтверди, що він викликає саме `git-init`, `create-project`, `create-build`, `create-actions`, `check` у такому порядку. Не зараховуй просту згадку команд поза послідовністю дій.
+   - `.github/prompts/run-init.prompt.md`
+4. **Порядок `init`:** перевір вміст `.github/prompts/run-init.prompt.md` і підтверди, що він викликає саме `git-init`, `create-project`, `create-build`, `create-actions`, `check` у такому порядку. Не зараховуй просту згадку команд поза послідовністю дій.
 5. **Файли проєкту:** перевір наявність `pom.xml`, `src/main/java/edu/lpnu/hello/App.java`, `src/main/java/edu/lpnu/hello/Calculator.java`, `src/test/java/edu/lpnu/hello/CalculatorTest.java`, `README.md`, `docs/architecture.md`, `docs/usage.md`, `ci.sh` і `ci.bat`.
 6. **Maven, тест та JAR:** виконай з кореня проєкту:
 
@@ -69,7 +69,7 @@ agent: build-engineer
 
 - Manifest: `.github/agents/build-engineer.agent.md`
 - Skills: `.github/skills/project-scaffold/SKILL.md`, `.github/skills/build-and-test/SKILL.md`, `.github/skills/github-actions/SKILL.md`
-- Команди: `.github/prompts/git-init.prompt.md`, `.github/prompts/create-project.prompt.md`, `.github/prompts/create-build.prompt.md`, `.github/prompts/create-actions.prompt.md`, `.github/prompts/check.prompt.md`, `.github/prompts/init.prompt.md`
+- Команди: `.github/prompts/git-init.prompt.md`, `.github/prompts/create-project.prompt.md`, `.github/prompts/create-build.prompt.md`, `.github/prompts/create-actions.prompt.md`, `.github/prompts/check.prompt.md`, `.github/prompts/run-init.prompt.md`
 - Проєкт: `pom.xml`, `src/main/java/edu/lpnu/hello/App.java`, `src/main/java/edu/lpnu/hello/Calculator.java`, `src/test/java/edu/lpnu/hello/CalculatorTest.java`, `README.md`, `docs/architecture.md`, `docs/usage.md`, `ci.sh`, `ci.bat`, `.github/workflows/ci.yml`
 - Артефакт після Maven-збірки: `target/hello.jar`
 
@@ -88,7 +88,7 @@ test -f .github/prompts/create-project.prompt.md
 test -f .github/prompts/create-build.prompt.md
 test -f .github/prompts/create-actions.prompt.md
 test -f .github/prompts/check.prompt.md
-test -f .github/prompts/init.prompt.md
+test -f .github/prompts/run-init.prompt.md
 test -f pom.xml
 test -f src/main/java/edu/lpnu/hello/App.java
 test -f src/main/java/edu/lpnu/hello/Calculator.java

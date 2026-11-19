@@ -41,7 +41,7 @@ java -jar target/hello.jar
 
 Поясни, що ця команда доступна після налаштування Maven-проєкту та складання `target/hello.jar`.
 
-Для запуску агента поясни: відкрити Copilot Chat у VS Code, вибрати `build-engineer` та попросити виконати `create-project` (або `init` для повного налаштування).
+Для запуску агента поясни: відкрити Copilot Chat у VS Code, вибрати `build-engineer` та попросити виконати `create-project` (або `/run-init` для повного налаштування).
 
 ## Безпечне створення та повторний запуск
 
