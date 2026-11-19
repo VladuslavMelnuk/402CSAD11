@@ -24,6 +24,7 @@
 З кореня workspace виконайте:
 
 ```sh
+java src/main/java/edu/lpnu/hello/App.java
 java -jar target/hello.jar
 ```
 
